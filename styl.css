@@ -1,0 +1,187 @@
+body {
+    margin: 0px;
+    background: linear-gradient(rgb(160, 116, 204), rgb(54, 10, 98));
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.layout {
+    display: grid;
+    height: 100dvh;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header header"
+        "section section aside"
+        "footer footer footer";
+    gap: 10px;
+}
+
+header {
+    grid-area: header;
+    background-color: rgba(31, 6, 56, 1);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+header img , .asideButtons img{
+    height: 40px;
+    margin-left: 5%;
+
+    
+}
+nav{
+    padding: 5px;;
+    align-items: center;
+    height:40px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    gap:20px;
+    display:flex;
+    justify-content: flex-end;
+}
+nav img{
+        width:25px;
+        height:25px;
+        
+}
+section {
+    display: flex;
+    flex-wrap: wrap;
+    grid-area: section;
+    background-color: rgba(31, 6, 56, 1);
+    height: auto;
+    background-image: url("Notebook.png");
+    background-repeat: repeat;
+    border-radius: 15px;
+    padding:15px;
+    gap:20px;
+}
+
+.note{
+    width:150px;
+    height:150px;
+    background-color: lightcoral;
+    border-radius: 15px;
+    box-shadow: #a64a4a 10px 10px;
+    padding:10px;
+}
+.note img {
+    width:90%;
+    height:auto;
+}
+
+aside {
+    grid-area: aside;
+    background-color: rgba(31, 6, 56, 1);
+    background-image: url("Notebook.png");
+    background-repeat: repeat;
+    height: auto;
+    border-radius: 15px;
+}
+
+.asideButtons {
+    display: flex;
+    align-items: center;
+
+    width: 95%;
+    height: 100px;
+    background-color: rgba(31, 6, 56, 1);
+    border: 5px solid rgb(160, 116, 204);
+    border-radius: 15px;
+    color: whitesmoke;
+    margin: 10px;
+    padding: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: background-color 0.3s ease-in-out;
+
+    img {
+        margin-right: 10px;
+    }
+}
+
+#newNoteButton {
+    border: 5px solid #65aa71;
+}
+
+#newNoteButton:Hover {
+    background-color: #315036;
+}
+
+#editNoteButton {
+    border: 5px solid #4a6aa6;
+}
+
+#editNoteButton:hover {
+    background-color: #30456b;
+}
+
+#deleteNoteButton {
+    border: 5px solid #a64a4a;
+}
+
+#deleteNoteButton:hover {
+    background-color: #652c2c;
+}
+
+#settingNoteButton {
+    border: 5px solid #9b96aa;
+}
+
+#settingNoteButton:hover{
+    background-color: #6d6a78;
+}
+
+footer {
+    grid-area: footer;
+    background-color: rgba(31, 6, 56, 1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    color: whitesmoke
+}
+
+@media (max-width: 600px) {
+
+    .layout {
+        height: 100dvh;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 2fr auto;
+        grid-template-areas:
+            "header"
+            "aside"
+            "section"
+            "footer";
+    }
+
+    aside {
+        display: flex;
+        flex-wrap: wrap;        /* <-- allows 2 rows */
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 1px;              /* optional but nice */
+    }
+
+    .asideButtons {
+        width: 40%;   
+        height:40%;          /* <-- 2 per row */
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin:10px;
+    }
+
+    section{
+        justify-content: center;
+    }
+    .note{
+        width:100px;
+        height:100px;
+        
+    }
+    
+}
