@@ -1,14 +1,14 @@
 body {
     margin: 0px;
     background: linear-gradient(rgb(160, 116, 204), rgb(54, 10, 98));
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Space Mono", monospace;
 }
 
-.Hidden{
+.hidden {
     display: none;
 }
 
-#modalOverlay {
+#modal_overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.6);
@@ -20,12 +20,25 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
     background: white;
     padding: 20px;
     z-index: 9999;
     border-radius: 8px;
-  }
+}
 
+.close_modal {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: lightcoral;
+    border: darkred 1px solid;
+    border-top-right-radius: 6px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
 
 .layout {
     display: grid;
@@ -48,30 +61,30 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-
 }
 
-header img , .asideButtons img{
+header img,
+.aside_buttons img {
     height: 40px;
     margin-left: 5%;
-
-    
 }
-nav{
-    padding: 5px;;
+
+nav {
+    padding: 5px;
     align-items: center;
-    height:40px;
+    height: 40px;
     background-color: whitesmoke;
     border-radius: 15px;
-    gap:20px;
-    display:flex;
+    gap: 20px;
+    display: flex;
     justify-content: flex-end;
 }
-nav img{
-        width:25px;
-        height:25px;
-        
+
+nav img {
+    width: 25px;
+    height: 25px;
 }
+
 section {
     display: flex;
     flex-wrap: wrap;
@@ -81,21 +94,22 @@ section {
     background-image: url("Notebook.png");
     background-repeat: repeat;
     border-radius: 15px;
-    padding:15px;
-    gap:20px;
+    padding: 15px;
+    gap: 20px;
 }
 
-.note{
-    width:150px;
-    height:150px;
+.note {
+    width: 150px;
+    height: 150px;
     background-color: lightcoral;
     border-radius: 15px;
     box-shadow: #a64a4a 10px 10px;
-    padding:10px;
+    padding: 10px;
 }
+
 .note img {
-    width:90%;
-    height:auto;
+    width: 100%;
+    height: auto;
 }
 
 aside {
@@ -107,10 +121,9 @@ aside {
     border-radius: 15px;
 }
 
-.asideButtons {
+.aside_buttons {
     display: flex;
     align-items: center;
-
     width: 95%;
     height: 100px;
     background-color: rgba(31, 6, 56, 1);
@@ -121,41 +134,41 @@ aside {
     padding: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     transition: background-color 0.3s ease-in-out;
-
-    img {
-        margin-right: 10px;
-    }
 }
 
-#newNoteButton {
+.aside_buttons img {
+    margin-right: 10px;
+}
+
+#new_note_button {
     border: 5px solid #65aa71;
 }
 
-#newNoteButton:Hover {
+#new_note_button:hover {
     background-color: #315036;
 }
 
-#editNoteButton {
+#edit_note_button {
     border: 5px solid #4a6aa6;
 }
 
-#editNoteButton:hover {
+#edit_note_button:hover {
     background-color: #30456b;
 }
 
-#deleteNoteButton {
+#delete_note_button {
     border: 5px solid #a64a4a;
 }
 
-#deleteNoteButton:hover {
+#delete_note_button:hover {
     background-color: #652c2c;
 }
 
-#settingNoteButton {
+#setting_button {
     border: 5px solid #9b96aa;
 }
 
-#settingNoteButton:hover{
+#setting_button:hover {
     background-color: #6d6a78;
 }
 
@@ -164,7 +177,7 @@ footer {
     background-color: rgba(31, 6, 56, 1);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    color: whitesmoke
+    color: whitesmoke;
 }
 
 @media (max-width: 600px) {
@@ -182,29 +195,28 @@ footer {
 
     aside {
         display: flex;
-        flex-wrap: wrap;        
+        flex-wrap: wrap;
         justify-content: center;
         align-items: flex-start;
         padding: 0px;
-        gap: 1px;              
+        gap: 1px;
     }
 
-    .asideButtons {
-        width: 40%;   
-        height:40%;          
+    .aside_buttons {
+        width: 40%;
+        height: 40%;
         display: flex;
         align-items: center;
         padding: 10px;
-        margin:10px;
+        margin: 10px;
     }
 
-    section{
+    section {
         justify-content: center;
     }
-    .note{
-        width:100px;
-        height:100px;
-        
+
+    .note {
+        width: 100px;
+        height: 100px;
     }
-    
 }

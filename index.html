@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stickify - Your Notes</title>
     <link rel="stylesheet" href="styl.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
     <div class="layout">
         <header>
-            <img src="stickifylogo.svg" alt="logo">
+            <img src="stickifylogo.png" alt="logo">
             <h1>Stickify - Twoje notatki</h1>
             <nav>
                 <a href="https://www.instagram.com/Marcinuu662" target="_blank">
@@ -22,32 +25,46 @@
                 <a href="https://github.com/Marcinuu16" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="32">
                 </a>
-
             </nav>
         </header>
 
-        <section id="section">
+        <section id="section"></section>
 
-        </section>
         <aside>
-            <button class="asideButtons" id="newNoteButton"><img src="add.png" alt="">Nowa notatka</button>
-            <button class="asideButtons" id="editNoteButton"><img src="edit.png" alt="">Edytuj notatkę</button>
-            <button class="asideButtons" id="deleteNoteButton"><img src="delete.png" alt="">Usuń notatkę</button>
-            <button class="asideButtons" id="settingNoteButton"><img src="setting.png" alt="">Ustawienia
-                notatek</button>
+            <button class="aside_buttons" id="new_note_button">
+                <img src="add.png" alt="">Nowa notatka
+            </button>
+
+            <button class="aside_buttons" id="edit_note_button">
+                <img src="edit.png" alt="">Edytuj notatki
+            </button>
+
+            <button class="aside_buttons" id="delete_note_button">
+                <img src="delete.png" alt="">Usuń notatkę
+            </button>
+
+            <button class="aside_buttons" id="setting_button">
+                <img src="setting.png" alt="">Ustawienia
+            </button>
         </aside>
+
         <footer>© 2026 Marcin Burek | Licencja: CC BY-NC 4.0 | Źródła grafik: własne</footer>
     </div>
 
-    <div id="modalOverlay" class="Hidden"></div>
-    
-    <div id="modal1" class="Modal Hidden">
-        <p>This is modal 1</p>
-        <button onclick="closeModal('modal1')">Close</button>
+    <div id="modal_overlay" class="hidden"></div>
+
+    <div id="new_note_modal" class="modal hidden">
+        <form action=""></form>
+        Tytuł<input id="note_title" type="text" placeholder="Notatka"><br>
+        Treść<input id="note_text" type="text" placeholder=""><br>
+
+        <button id="create_note_button">Create</button>
+        <button class="close_modal"><b>X</b></button>
     </div>
-    <div id="modal2" class="Modal Hidden">
-        <p>This is modal 2</p>
-        <button onclick="closeModal('modal2')">Close</button>
+
+    <div id="edit_note_modal" class="modal hidden">
+        <p>This is modal 2 Lore</p>
+        <button class="close_modal"><b>X</b></button>
     </div>
 
     <script src="script.js"></script>
