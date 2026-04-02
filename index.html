@@ -48,17 +48,25 @@
             </button>
         </aside>
 
-        <footer>© 2026 Marcin Burek | Licencja: CC BY-NC 4.0 | Źródła grafik: własne</footer>
+        <footer>© 2026 Marcin Burek — CC BY‑NC 4.0 | Non‑commercial use | All assets created by me
+        </footer>
     </div>
 
     <div id="modal_overlay" class="hidden"></div>
 
     <div id="new_note_modal" class="modal hidden">
-        <form action=""></form>
-        Tytuł<input id="note_title" type="text" placeholder="Notatka"><br>
-        Treść<input id="note_text" type="text" placeholder=""><br>
-
-        <button id="create_note_button">Create</button>
+        Tytuł<input id="create_note_title" type="text" placeholder=""><br>
+        Treść<input id="create_note_text" type="text" placeholder=""><br>
+        Kolor 
+        <select id="create_note_color">
+            <option value="lightcoral" >🟥 | Czerwony</option>
+            <option value="lightsalmon" >🟧 | Pomarańczowy</option>
+            <option value="lightgoldenrodyellow" >🟨 | Żółty</option>
+            <option value="lightgreen" >🟩 | Zielony</option>
+            <option value="lightblue">🟦 | Niebieski</option>
+            <option value="lightgray">⬛ | Szary</option>
+          </select>
+        <button id="create_note_button">Utwórz notatkę</button>
         <button class="close_modal"><b>X</b></button>
     </div>
 
