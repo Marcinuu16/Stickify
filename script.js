@@ -11,6 +11,12 @@ const edit_note_modal = document.getElementById("edit_note_modal");
 const delete_note_button = document.getElementById("delete_note_button");
 const delete_note_modal = document.getElementById("delete_note_modal");
 
+document.addEventListener("click", (e) => {
+    if (is_delete_mode && e.target.classList.contains("deletable")) {
+        delete_note(e.target.id)
+    }
+});
+
 let notes = []
 let is_delete_mode = false
 let notes_in_DOM;
@@ -49,6 +55,7 @@ edit_note_button.addEventListener("click", () => {
     edit_note_modal.classList.remove("hidden");
     delete_mode(false)
     console.log(notes);
+    console.log(notes_in_DOM);
 
 })
 edit_note_modal.querySelector(".close_modal").addEventListener("click", close_edit_note_modal)
@@ -88,12 +95,15 @@ function show_notes() {
     notes.forEach(note_item => {
         const note = document.createElement("div");
         note.classList.add("note");
+        note.id = note_item.id
 
         const title = document.createElement("h3");
+        title.classList.add("note-contents")
         title.textContent = note_item.title;
         note.appendChild(title);
 
         const text = document.createElement("p");
+        text.classList.add("note-contents")
         text.textContent = note_item.text.slice(0, 40);
         note.appendChild(text);
 
@@ -117,7 +127,6 @@ function delete_mode(value) {
     is_delete_mode = value;
 
     if (value == true) {
-        document.body.style.cursor = 'url("delete_cursor.png"), auto';
         delete_note_button.style.backgroundColor = "#652c2c"
         gather_notes_DOM()
         notes_in_DOM.forEach(note_dom => {  
@@ -127,7 +136,6 @@ function delete_mode(value) {
         delete_note_modal.classList.remove("hidden")
         console.log("delete mode on")
     } else {
-        document.body.style.cursor = 'auto';
         delete_note_button.style.backgroundColor = "rgba(31, 6, 56, 1)";
         gather_notes_DOM()
         notes_in_DOM.forEach(note_dom => {  
@@ -169,6 +177,14 @@ function create_note(data) {
     save_notes();
 }
 
+function delete_note(id_to_delete){
+    console.log("deleted note with id:"+id_to_delete)
+    notes = notes.filter(note => String(note.id) !== id_to_delete);
+    save_notes()
+    show_notes()
+    delete_mode(false)
+}   
+
 function gather_notes_DOM(){
     notes_in_DOM = section.querySelectorAll(".note");
 }
@@ -186,6 +202,7 @@ function load_notes() {
 
 function save_notes() {
     localStorage.setItem("notes", JSON.stringify(notes));
+    
 }
 
 

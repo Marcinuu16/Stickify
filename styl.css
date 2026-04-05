@@ -5,7 +5,14 @@ body {
 }
 
 .deletable{
-    outline: solid 5px red;
+    cursor: url("delete_cursor.png") 16 16, auto;
+}
+.deletable:hover{
+    outline: dashed 5px red;
+    
+}
+.deletable .note-contents{
+    user-select: none;
 }
 
 .hidden {
@@ -111,7 +118,7 @@ section {
 
 .note {
     width: 150px;
-    height: 150px;
+    height:150px;
     background-color: lightcoral;
     border-radius: 15px;
     box-shadow: #30456b 10px 10px;
@@ -120,7 +127,9 @@ section {
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
-
+.note-contents{
+    pointer-events: none;
+}
 .note h3{
     margin:0px;
 }
