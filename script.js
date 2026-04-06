@@ -104,7 +104,7 @@ function show_notes() {
 
         const text = document.createElement("p");
         text.classList.add("note-contents")
-        text.textContent = note_item.text.slice(0, 40);
+        text.textContent = note_item.text.slice(0, 59);
         note.appendChild(text);
 
         note.style.backgroundColor = note_item.bgcolor;

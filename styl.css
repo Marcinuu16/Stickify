@@ -123,16 +123,13 @@ section {
     border-radius: 15px;
     box-shadow: #30456b 10px 10px;
     padding: 10px;
-    transition: all ease-in-out 0.3s;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    transition: all ease-in-out 0.3s;   
 }
 .note-contents{
     pointer-events: none;
-}
-.note h3{
     margin:0px;
 }
+
 .note:hover{
     transform: scale(1.1);
 }
