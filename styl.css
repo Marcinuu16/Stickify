@@ -16,7 +16,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #modal_overlay {
@@ -31,13 +31,69 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
+    width: 40%;
     height: 60%;
     background: white;
     padding: 20px;
     z-index: 9999;
     border-radius: 8px;
 }
+
+#new_note_modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:20px;
+    color:white;
+}
+
+#title_container , #text_container , #color_container , #create_button_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(31, 6, 56, 1);
+    border-radius: 15px;
+    border: 5px solid #65aa71;
+    width:100%;
+    flex: 1;
+}
+
+#create_note_button{
+    background-color:#7dcd8a;
+    font-family: "Space Mono", monospace;
+    color:white;
+    
+}
+
+#color_container select{
+    background-color: rgba(31,5,56,1);
+    font-family: "Space Mono", monospace;
+    color:white;
+}
+
+#new_note_modal input , textarea{
+    width:100%;
+    height:100%;    
+    background-color: rgb(23, 8, 41);
+    border: none;
+    box-sizing: border-box;
+    color:white;
+    font-family: "Space Mono", monospace;
+    resize:none;
+}
+
+.valid{
+    border: 5px solid #65aa71 !important;
+}
+
+.invalid{
+    border: 5px solid #a64a4a !important;
+}
+
+#text_container{
+    flex:2;
+}
+
 
 #delete_note_modal{
     top: 10%;
@@ -78,7 +134,7 @@ header {
     color: whitesmoke;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 10px;  
 }
 
 header img,
@@ -107,6 +163,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     grid-area: section;
+    align-content: flex-start;
     background-color: rgba(31, 6, 56, 1);
     height: auto;
     background-image: url("Notebook.png");
@@ -133,10 +190,7 @@ section {
 .note:hover{
     transform: scale(1.1);
 }
-.note img {
-    width: 100%;
-    height: auto;
-}
+
 
 aside {
     grid-area: aside;
@@ -158,7 +212,7 @@ aside {
     color: whitesmoke;
     margin: 10px;
     padding: 5px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Space Mono", monospace;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -174,11 +228,11 @@ aside {
     background-color: #315036;
 }
 
-#edit_note_button {
+#mark_note_button {
     border: 5px solid #4a6aa6;
 }
 
-#edit_note_button:hover {
+#mark_note_button:hover {
     background-color: #30456b;
 }
 

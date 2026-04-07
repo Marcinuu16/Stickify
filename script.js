@@ -2,24 +2,26 @@ const section = document.getElementById("section");
 const modal_overlay = document.getElementById("modal_overlay");
 const new_note_button = document.getElementById("new_note_button");
 const new_note_modal = document.getElementById("new_note_modal");
+const title_container = document.getElementById("title_container")
+const text_container = document.getElementById("text_container")
 const create_note_title = document.getElementById("create_note_title")
 const create_note_text = document.getElementById("create_note_text")
 const create_note_color = document.getElementById("create_note_color")
 const create_note_button = document.getElementById("create_note_button")
-const edit_note_button = document.getElementById("edit_note_button");
-const edit_note_modal = document.getElementById("edit_note_modal");
+const mark_note_button = document.getElementById("mark_note_button");
+const mark_note_modal = document.getElementById("mark_note_modal");
 const delete_note_button = document.getElementById("delete_note_button");
 const delete_note_modal = document.getElementById("delete_note_modal");
+const delete_note_confirm_modal = document.getElementById("delete_note_confirm_modal");
+const confirm_deletion = document.getElementById("confirm_deletion");
+const cancel_deletion = document.getElementById("cancel_deletion");
 
-document.addEventListener("click", (e) => {
-    if (is_delete_mode && e.target.classList.contains("deletable")) {
-        delete_note(e.target.id)
-    }
-});
+
 
 let notes = []
 let is_delete_mode = false
 let notes_in_DOM;
+let targeted_note;
 
 load_notes();
 show_notes();
@@ -48,45 +50,90 @@ create_note_button.addEventListener("click", () => {
     show_notes();
 });
 
+create_note_title.addEventListener("input", () => {
+    if (create_note_title.value.trim().length > 0) {
+        title_container.classList.add("valid")
+        title_container.classList.remove("invalid")
+    } else {
+        title_container.classList.add("invalid")
+        title_container.classList.remove("valid")
+    }
+});
+
+create_note_text.addEventListener("input", () => {
+    if (create_note_text.value.trim().length > 0) {
+        text_container.classList.add("valid")
+        text_container.classList.remove("invalid")
+    } else {
+        text_container.classList.add("invalid")
+        text_container.classList.remove("valid")
+    }
+});
 
 
-edit_note_button.addEventListener("click", () => {
+
+mark_note_button.addEventListener("click", () => {
     modal_overlay.classList.remove("hidden");
-    edit_note_modal.classList.remove("hidden");
+    mark_note_modal.classList.remove("hidden");
     delete_mode(false)
     console.log(notes);
     console.log(notes_in_DOM);
 
 })
-edit_note_modal.querySelector(".close_modal").addEventListener("click", close_edit_note_modal)
+mark_note_modal.querySelector(".close_modal").addEventListener("click", close_edit_note_modal)
 modal_overlay.addEventListener("click", close_edit_note_modal);
+
 
 
 
 delete_note_button.addEventListener("click", () => {
     toggle_delete_mode()
 })
-delete_note_modal.querySelector(".close_modal")
-    .addEventListener("click", () => delete_mode(false));
+delete_note_modal.querySelector(".close_modal").addEventListener("click", () => delete_mode(false));
 
+document.addEventListener("click", (e) => {
+    if (is_delete_mode && e.target.classList.contains("deletable")) {
+        targeted_note = e.target
+        modal_overlay.classList.remove("hidden");
+        delete_note_confirm_modal.classList.remove("hidden");  
+        delete_note_modal.classList.add("hidden");
+    }
+});
 
+delete_note_confirm_modal.querySelector(".close_modal").addEventListener("click", close_delete_note_confirm_modal)
+modal_overlay.addEventListener("click", close_delete_note_confirm_modal);
 
+confirm_deletion.addEventListener("click", () => {
+    delete_note(targeted_note.id)
+    close_delete_note_confirm_modal();
 
+});
+
+cancel_deletion.addEventListener("click", () => {
+    close_delete_note_confirm_modal();
+    
+});
 
 
 
 function close_new_note_modal() {
     modal_overlay.classList.add("hidden");
     new_note_modal.classList.add("hidden");
+    console.log("schowano nowy note")
 }
 
 function close_edit_note_modal() {
     modal_overlay.classList.add("hidden");
-    edit_note_modal.classList.add("hidden");
+    mark_note_modal.classList.add("hidden");
 }
 
 function close_delete_note_modal() {
     delete_note_modal.classList.add("hidden");
+}
+
+function close_delete_note_confirm_modal() {
+    modal_overlay.classList.add("hidden");
+    delete_note_confirm_modal.classList.add("hidden");
 }
 
 function show_notes() {
@@ -136,7 +183,7 @@ function delete_mode(value) {
         delete_note_modal.classList.remove("hidden")
         console.log("delete mode on")
     } else {
-        delete_note_button.style.backgroundColor = "rgba(31, 6, 56, 1)";
+        delete_note_button.style.backgroundColor = "";
         gather_notes_DOM()
         notes_in_DOM.forEach(note_dom => {  
             note_dom.classList.remove("deletable")
@@ -156,11 +203,25 @@ function get_note_form_data() {
 }
 
 function validate_note_creation(data) {
-    if (!data.title) return false;
-    if (!data.text) return false;
-    if (!data.color) return false;
-    return true;
+    let valid = true;
+
+    if (!data.title) {
+        title_container.classList.add("invalid");
+        valid = false;
+    }
+
+    if (!data.text) {
+        text_container.classList.add("invalid");
+        valid = false;
+    }
+
+    if (!data.color) {
+        valid = false;
+    }
+
+    return valid;
 }
+
 
 function create_note(data) {
     const newId = notes.length > 0

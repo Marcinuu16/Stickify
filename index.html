@@ -17,7 +17,7 @@
     <div class="layout">
         <header>
             <img src="stickifylogo.png" alt="logo">
-            <h1>Stickify - Twoje notatki</h1>
+            <h1>Stickify - Szybkie notatki</h1>
             <nav>
                 <a href="https://www.instagram.com/Marcinuu662" target="_blank">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="32">
@@ -35,8 +35,8 @@
                 <img src="add.png" alt="">Nowa notatka
             </button>
 
-            <button class="aside_buttons" id="edit_note_button">
-                <img src="edit.png" alt="">Edytuj notatki
+            <button class="aside_buttons" id="mark_note_button">
+                <img src="edit.png" alt="">Odznacz notatki
             </button>
 
             <button class="aside_buttons" id="delete_note_button">
@@ -54,28 +54,30 @@
 
     <div id="modal_overlay" class="hidden"></div>
 
+    
     <div id="new_note_modal" class="modal hidden">
-        Tytuł<input id="create_note_title" type="text" placeholder=""><br>
-        Treść<input id="create_note_text" type="text" placeholder=""><br>
-        Kolor 
-        <select id="create_note_color">
-            <option value="lightcoral" >🟥 | Czerwony</option>
-            <option value="lightsalmon" >🟧 | Pomarańczowy</option>
-            <option value="lightgoldenrodyellow" >🟨 | Żółty</option>
-            <option value="lightgreen" >🟩 | Zielony</option>
-            <option value="lightblue">🟦 | Niebieski</option>
-            <option value="mediumpurple">🟪 | Fioletowy</option>
-            <option value="lightgray">⬛ | Szary</option>
-          </select>
-        <button id="create_note_button">Utwórz notatkę</button>
+        <div id="title_container">Tytuł<br><input id="create_note_title" type="text" placeholder=""><br></div>
+        <div id="text_container">Treść<br><textarea id="create_note_text" placeholder=""></textarea><br></div>
+        <div id="color_container">Kolor<br>
+            <select id="create_note_color">
+                <option value="lightcoral" >🟥 | Czerwony</option>
+                <option value="lightsalmon" >🟧 | Pomarańczowy</option>
+                <option value="lightgoldenrodyellow" >🟨 | Żółty</option>
+                <option value="lightgreen" >🟩 | Zielony</option>
+                <option value="lightblue">🟦 | Niebieski</option>
+                <option value="mediumpurple">🟪 | Fioletowy</option>
+                <option value="lightgray">⬛ | Szary</option>
+              </select></div>
+              
+        <div id="create_button_container">Potwierdź<br><button id="create_note_button">Utwórz notatkę</button></div>
         <button class="close_modal"><b>X</b></button>
     </div>
 
-    <div id="edit_note_modal" class="modal hidden">
+    <div id="mark_note_modal" class="modal hidden">
         <p>This is modal 2 Lore</p>
         <button class="close_modal"><b>X</b></button>
     </div>
-
+    
     <div id="delete_note_modal" class="modal hidden">
         <p>Wybierz notatkę do usunięcia, najedz na notatkę i naciśnij lewy przycisk myszy.</p>
         <button class="close_modal"><b>X</b></button>
@@ -83,8 +85,8 @@
 
     <div id="delete_note_confirm_modal" class="modal hidden">
         <p>Czy na pewno chcesz usunąć tą notatkę?</p>
-        <button id="confirm_deletion">Utwórz notatkę</button>
-        <button id="cancel_deletion">Utwórz notatkę</button>
+        <button id="confirm_deletion">Usuń notatkę</button>
+        <button id="cancel_deletion">Anuluj</button>
         <button class="close_modal"><b>X</b></button>
     </div>
 
